@@ -3,4 +3,5 @@ extends Node2D
 @onready var grid = $Grid
 
 func _ready():
-	pass
+	#call to generate upon creation
+	grid.generate_grid()
