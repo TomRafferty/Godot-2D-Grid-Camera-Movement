@@ -14,15 +14,7 @@ func generate_grid():
 		for y in width:
 			grid[Vector2(x,y)] = null #null simply indicating that the space is empty
 			if show_debug:
-				var rect = ReferenceRect.new()
-				rect.position = grid_to_world(Vector2(x,y))
-				rect.size = Vector2(cell_size, cell_size)
-				rect.editor_only = false
-				add_child(rect)
-				var label = Label.new()
-				label.position = grid_to_world(Vector2(x,y))
-				label.text = str(Vector2(x,y))
-				add_child(label)
+				create_debug_rect(x,y)
 
 func grid_to_world(pos: Vector2) -> Vector2:
 	#takes a grid position and multiplies it by
@@ -33,3 +25,16 @@ func world_to_grid(pos: Vector2) -> Vector2:
 	#takes a world position and divides it by the 
 	#cell size to give us our grid position
 	return floor(pos / cell_size)
+
+func create_debug_rect(x, y):
+	#creates a debug rect for easy visual 
+	#representation of the grid - complete with label of position
+	var rect = ReferenceRect.new()
+	rect.position = grid_to_world(Vector2(x,y))
+	rect.size = Vector2(cell_size, cell_size)
+	rect.editor_only = false
+	add_child(rect)
+	var label = Label.new()
+	label.position = grid_to_world(Vector2(x,y))
+	label.text = str(Vector2(x,y))
+	add_child(label)
