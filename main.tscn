@@ -8,3 +8,5 @@ script = ExtResource("1_xplat")
 
 [node name="Grid" type="Node2D" parent="."]
 script = ExtResource("2_a6hbm")
+
+[node name="debug_rect_container" type="Container" parent="Grid"]
