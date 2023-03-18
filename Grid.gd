@@ -29,12 +29,15 @@ func world_to_grid(pos: Vector2) -> Vector2:
 func create_debug_rect(x, y):
 	#creates a debug rect for easy visual 
 	#representation of the grid - complete with label of position
+	
+	var container = $debug_rect_container
+	
 	var rect = ReferenceRect.new()
 	rect.position = grid_to_world(Vector2(x,y))
 	rect.size = Vector2(cell_size, cell_size)
 	rect.editor_only = false
-	add_child(rect)
+	container.add_child(rect)
 	var label = Label.new()
 	label.position = grid_to_world(Vector2(x,y))
 	label.text = str(Vector2(x,y))
-	add_child(label)
+	container.add_child(label)
